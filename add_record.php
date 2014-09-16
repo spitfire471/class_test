@@ -1,16 +1,18 @@
 <html>
 <body>
 <?php
-include 'classes.php';
+include 'DB.php';
 if (isset($_GET["id"])){
-$a=new DB();
-$row=$a->select_row_method($_GET["id"]);
+$table="vehicle_info";
+$column="id";
+$DB_object=new DB();
+$data=$DB_object->select_data($table,$column,$_GET["id"]);
 ?>
 <form action="rec_conf.php" method="post">
-<input type="hidden" name="id" value="<?php echo $row["id"];?>">
-Marka: <input type="text" name="marka" value="<?php echo $row["marka"];?>" >
-Model: <input type="text" name="model" value="<?php echo $row["model"];?>" >
-Rik: <input type="text" name="rik" value="<?php echo $row["rik"];?>" >
+<input type="hidden" name="id" value="<?php echo $data["id"];?>">
+Marka: <input type="text" name="marka" value="<?php echo $data["marka"];?>" >
+Model: <input type="text" name="model" value="<?php echo $data["model"];?>" >
+Rik: <input type="text" name="rik" value="<?php echo $data["rik"];?>" >
 <input type="submit" value="Change record">
 </form>
 <?php

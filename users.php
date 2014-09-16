@@ -1,9 +1,10 @@
 <html>
 <body>
 <?php
-include 'classes.php';
-$array=$a->select_users_method();	
-$c=count($array);
+include 'DB.php';
+$DB_object= new DB();
+$users=$DB_object->select_all_data("users");	
+$c=count($users);
 ?>
 <table border=1>
 <tr>
@@ -13,21 +14,21 @@ $c=count($array);
 <th></th>
 </tr>
 <?php
-	for ($x=0;$x<$c;$x++){
-		for ($y=0; $y<2;$y++){
+	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
+		
 ?>
-<td><?php echo ($array[$x][$y]); ?></td>
+<td><?php echo ($users[$rowIndex]["id"]); ?></td>
+<td><?php echo ($users[$rowIndex]["name"]); ?></td>
 <?php
-}
-if ($array[$x][3]==1 ){
+if ($users[$rowIndex]["permission"]==1 ){
 $link="Delete rights";
 }
-if ($array[$x][3]==0 ){
+if ($users[$rowIndex]["permission"]==0 ){
 $link="Add rights";
 }
 ?>
-<td><a href="permission.php?id=<?php echo ($array[$x][0]) ?>"><?php echo $link; ?></a></td>
-<td><a href="delete_user.php?id=<?php echo ($array[$x][0]);?>">delete</a></td>
+<td><a href="permission.php?id=<?php echo ($users[$rowIndex]["id"]) ?>"><?php echo $link; ?></a></td>
+<td><a href="delete_user.php?id=<?php echo ($users[$rowIndex]["id"]);?>">delete</a></td>
 </tr>
 <?php
 }

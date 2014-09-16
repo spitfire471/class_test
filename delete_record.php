@@ -1,7 +1,7 @@
 <?php
-include 'classes.php';
-$table="data";
+include 'DB.php';
+$table="vehicle_info";
 $del=new DB();
-$del->delete_record_method($table,$_GET["id"]);
+$del->delete_record($table,$_GET["id"]);
 echo "Record deleted";
 ?>

@@ -1,15 +1,17 @@
 <?php
 $name=$_POST["name"];
 $pass=md5($_POST["pass"]);
-include 'classes.php';
-$a=new DB();
-$row=$a->select_user_DB_method($name);
-if ($name==$row["name"]){
+include 'DB.php';
+$table="users";
+$column="name";
+$DB_object=new DB();
+$user=$DB_object->select_data($table,$column,$name);
+if ($name==$user["name"]){
 	echo "Select other name. User with the same name already exist.";
-	echo $row;
+	echo $user;
 }
 else{
-	$b=$a->add_user_method($name,$pass);
+	$DB_object2=$DB_object->add_user($name,$pass);
 	echo "User ".$name." succsesfuly aded";
 }
 echo '<center><a href="auth.php">Authorizatoin page</a></center>';

@@ -1,8 +1,8 @@
 <?php
-include 'classes.php';
+include 'DB.php';
 $table="users";
 $del=new DB();
-$del->delete_record_method($table,$_GET["id"]);
+$del->delete_record($table,$_GET["id"]);
 echo "user deleted";
 
 ?>
