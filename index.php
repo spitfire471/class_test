@@ -56,7 +56,7 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
 <td><a href="add_record.php?id=<?php echo ($data[$rowIndex]["id"]) ?>">edit</a></td>
-<td><a href="delete_record.php?id=<?php echo ($data[$rowIndex]["id"]);?>">delete</a></td>
+<td><a href="delete_vehicle.php?id=<?php echo ($data[$rowIndex]["id"]);?>">delete</a></td>
 <?php
 }
 ?>
