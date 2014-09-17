@@ -17,7 +17,7 @@ $name=$_SESSION["name"];
 $table="users";
 $column="name";
 $DB_object= new DB();
-$user=$DB_object->select_data($table,$column,$name);
+$user=$DB_object->select_data('users','name',$name);
 if ($_SESSION["name"]==$user["name"] && $_SESSION["pass"]==$user["pass"]){
 	echo "hello user ".$_SESSION["name"];
 	echo "</br>";

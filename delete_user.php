@@ -1,8 +1,7 @@
 <?php
 include 'DB.php';
-$table="users";
 $del=new DB();
-$del->delete_data($table,$_GET["id"]);
+$del->delete_data('users',$_GET["id"]);
 echo "user deleted";
 
 ?>

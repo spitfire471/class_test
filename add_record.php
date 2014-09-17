@@ -3,10 +3,8 @@
 <?php
 include 'DB.php';
 if (isset($_GET["id"])){
-$table="vehicle_info";
-$column="id";
 $DB_object=new DB();
-$vehicle=$DB_object->select_data($table,$column,$_GET["id"]);
+$vehicle=$DB_object->select_data('vehicle_info','id',$_GET["id"]);
 ?>
 <form action="rec_conf.php" method="post">
 <input type="hidden" name="id" value="<?php echo $vehicle["id"];?>">

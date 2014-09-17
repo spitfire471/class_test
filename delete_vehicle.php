@@ -2,6 +2,6 @@
 include 'DB.php';
 $table="vehicle_info";
 $del=new DB();
-$del->delete_data($table,$_GET["id"]);
+$del->delete_data('vehicle_info',$_GET["id"]);
 echo "Vehicle deleted";
 ?>
