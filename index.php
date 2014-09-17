@@ -28,8 +28,8 @@ if ($_SESSION["name"]==$user["name"] && $_SESSION["pass"]==$user["pass"]){
 		echo "</br>";
 	}
 	echo '<a href="add_record.php">Add record</a>';
-	$data=$DB_object->select_all_data("vehicle_info");	
-	$c=count($data);
+	$vehicle=$DB_object->select_all_data("vehicle_info");	
+	$c=count($vehicle);
 ?>
 <table border=1>
 <tr>
@@ -49,14 +49,14 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
 		
 ?>
-<td><?php echo ($data[$rowIndex]["marka"]); ?></td>
-<td><?php echo ($data[$rowIndex]["model"]); ?></td>
-<td><?php echo ($data[$rowIndex]["rik"]); ?></td>
+<td><?php echo ($vehicle[$rowIndex]["marka"]); ?></td>
+<td><?php echo ($vehicle[$rowIndex]["model"]); ?></td>
+<td><?php echo ($vehicle[$rowIndex]["rik"]); ?></td>
 <?php
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
-<td><a href="add_record.php?id=<?php echo ($data[$rowIndex]["id"]) ?>">edit</a></td>
-<td><a href="delete_vehicle.php?id=<?php echo ($data[$rowIndex]["id"]);?>">delete</a></td>
+<td><a href="add_record.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>">edit</a></td>
+<td><a href="delete_vehicle.php?id=<?php echo ($vehicle[$rowIndex]["id"]);?>">delete</a></td>
 <?php
 }
 ?>

@@ -11,7 +11,9 @@ if ($name==$user["name"]){
 	echo $user;
 }
 else{
-	$DB_object2=$DB_object->add_user($name,$pass);
+	$rows="name,pass";
+	$values="'$name','$pass'";
+	$DB_object2=$DB_object->add_data($table,$rows,$values);
 	echo "User ".$name." succsesfuly aded";
 }
 echo '<center><a href="auth.php">Authorizatoin page</a></center>';

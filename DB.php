@@ -31,13 +31,13 @@ function select_data($table,$column,$value){
 	$data=mysql_fetch_assoc($query);
 	return $data;
 }
-function delete_record($table,$id){
+function delete_data($table,$id){
 	self::connect_DB();
 	$query=mysql_query(" DELETE FROM $table WHERE id='$id'");
 }
-function add_data($marka,$model,$rik){
+function add_data($table,$rows,$values){
 	self::connect_DB();
-	$query = mysql_query(" INSERT INTO  vehicle_info (marka,model,rik) VALUES ('$marka','$model','$rik')");
+	$query=mysql_query("INSERT INTO $table ($rows) VALUES ($values)");
 }
 function update_data($id,$marka,$model,$rik){
 	self::connect_DB();
@@ -46,17 +46,14 @@ function update_data($id,$marka,$model,$rik){
 function change_permission($id){
 self::connect_DB();
 	$query1 = mysql_query("SELECT * FROM users WHERE id='$id'");
-	$row = mysql_fetch_assoc($query1);
-	if ($row["permission"]==1){
+	$data = mysql_fetch_assoc($query1);
+	if ($data["permission"]==1){
 		$query2 = mysql_query("UPDATE users SET permission='0' WHERE id='$id'");
 	}
-	if ($row["permission"]==0){
+	if ($data["permission"]==0){
 		$query3 = mysql_query("UPDATE users SET permission='1' WHERE id='$id'");
 	}
 }
-function add_user($name,$pass){
-	self::connect_DB();
-	$query=mysql_query("INSERT INTO users (name, pass) VALUES ('$name', '$pass')");
 }
-}
+
 ?>

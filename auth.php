@@ -3,7 +3,7 @@
 <?php session_start(); ?>
 <form action="index.php" method="post">
 Name: <input type="text" name="name">
-Password: <input type="text" name="pass">
+Password: <input type="password" name="pass">
 <input type="submit" value="Log In">
 </form>
 </br>
