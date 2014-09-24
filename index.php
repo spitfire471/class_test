@@ -1,10 +1,13 @@
+<?php
+namespace Database;
+?>
 <html>
 <title>main</title>
 <body>
 
 <?php
 session_start();
-include 'DB.php';
+include '\Database\Abstract.php';
 header('Content-Type: text/html; charset=utf-8');
 define ('ADMIN_PERMISSION_ALLOWED', 1);
 if (isset($_POST["name"])){	
