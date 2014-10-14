@@ -1,7 +1,10 @@
+<?php
+namespace Database;
+?>
 <html>
 <body>
 <?php
-include 'DB.php';
+include '\Database\Abstract.php';
 if (isset($_GET["id"])){
 $DB_object=new DB();
 $vehicle=$DB_object->select_data('vehicle_info','id',$_GET["id"]);

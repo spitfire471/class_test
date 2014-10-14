@@ -1,9 +1,12 @@
+<?php
+namespace Database;
+?>
 <html>
 <body>
 <?php
-include 'DB.php';
-$DB_object= new DB();
-$users=$DB_object->select_all_data("users");	
+include '\Database\user.php';
+$DB_object= new Users();
+$users=$DB_object->get_users();	
 $c=count($users);
 ?>
 <table border=1>
