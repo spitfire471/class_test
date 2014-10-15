@@ -1,7 +1,6 @@
 <?php
-namespace Database;
-include '\Database\user.php';
-$del=new Users();
+include_once ('Database/user.php');
+$del=new Database\Users();
 $del->delete_user($_GET["id"]);
 echo "user deleted";
 echo "</br>";

@@ -44,6 +44,7 @@ function add_data($table,$rows,$values){
 
 function update_data($id,$table,$rows,$values){
 	self::connect_DB();
+	$text="";
 	$count_rows=count($rows);
 	for ($rowindex=0;$rowindex<$count_rows;$rowindex++){
 		$text=$text."$rows[$rowindex]='$values[$rowindex]',";

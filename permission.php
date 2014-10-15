@@ -1,7 +1,6 @@
 <?php
-namespace Database;
-include '\Database\Abstract.php';
-$DB_object= new DB();
+include_once ('Database/Abstract.php');
+$DB_object= new Database\DB();
 $DB_object->change_permission($_GET["id"]);
 echo "permission changed";
 echo "</br>";

@@ -1,14 +1,12 @@
 <?php
-namespace Database;
+include_once('Database/Abstract.php');
+if (isset($_GET["id"])){
+	$DB_object=new Database\DB();
+	$vehicle=$DB_object->select_data('vehicle_info','id',$_GET["id"]);
 ?>
 <html>
 <body>
-<?php
-include '\Database\Abstract.php';
-if (isset($_GET["id"])){
-$DB_object=new DB();
-$vehicle=$DB_object->select_data('vehicle_info','id',$_GET["id"]);
-?>
+
 <form action="rec_conf.php" method="post">
 <input type="hidden" name="id" value="<?php echo $vehicle["id"];?>">
 Marka: <input type="text" name="marka" value="<?php echo $vehicle["marka"];?>" >
@@ -20,8 +18,6 @@ Rik: <input type="text" name="rik" value="<?php echo $vehicle["rik"];?>" >
 }
 else {
 ?>
-
-
 <form action="rec_conf.php" method="post">
 Marka: <input type="text" name="marka" >
 Model: <input type="text" name="model" >

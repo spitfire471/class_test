@@ -1,6 +1,6 @@
 <?php
 namespace Database;
-include 'Abstract.php';
+include_once ('Abstract.php');
 class Users extends DB{
 const table_name="users";
 
@@ -26,7 +26,4 @@ $user=$this->update_data($id,self::table_name,$rows,$values);
 }
 
 }
-$a= new Users();
-$data=$a->get_user(3);
-var_dump ($data);
 ?>
