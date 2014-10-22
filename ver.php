@@ -1,6 +1,6 @@
 <?php
 include_once('Database/user.php');
-$name=$_POST["name"];
+$name=addslashes($_POST["name"]);
 $pass=md5($_POST["pass"]);
 $DB_object=new Database\Users();
 $user=$DB_object->get_user('name',$name);

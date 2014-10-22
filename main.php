@@ -12,7 +12,7 @@ if (isset($_POST["name"])){
 	unset ($_POST["name"]);
 	unset ($_POST["pass"]);
 }
-$name=$_SESSION["name"];
+$name=addslashes($_SESSION["name"]);
 $table="users";
 $column="name";
 $DB_object= new Database\DB();
@@ -59,9 +59,9 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
 		
 ?>
-<td><?php echo ($vehicle[$rowIndex]["marka"]); ?></td>
-<td><?php echo ($vehicle[$rowIndex]["model"]); ?></td>
-<td><?php echo ($vehicle[$rowIndex]["rik"]); ?></td>
+<td><?php echo (addslashes($vehicle[$rowIndex]["marka"])); ?></td>
+<td><?php echo (addslashes($vehicle[$rowIndex]["model"])); ?></td>
+<td><?php echo (addslashes($vehicle[$rowIndex]["rik"])); ?></td>
 <?php
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
