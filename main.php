@@ -1,7 +1,8 @@
 <?php
 define ('ADMIN_PERMISSION_ALLOWED', 1);
 
-include_once('Database/Abstract.php');
+include_once('Database/user.php');
+include_once('Database/vehicle.php');
 session_start();
 
 if (!isset($_SESSION["name"])) $_SESSION["name"] = '';
@@ -15,10 +16,11 @@ if (isset($_POST["name"])){
 $name=addslashes($_SESSION["name"]);
 $table="users";
 $column="name";
-$DB_object= new Database\DB();
-$user=$DB_object->select_data('users','name',$name);
+$DB_object= new Database\Users();
+$user=$DB_object->get_user('name',$name);
 
-$vehicle=$DB_object->select_all_data("vehicle_info");	
+$DB_object= new Database\Vehicle();
+$vehicle=$DB_object->get_vehicles();	
 $c=count($vehicle);
 header('Content-Type: text/html; charset=utf-8');
 ?>
@@ -28,7 +30,7 @@ header('Content-Type: text/html; charset=utf-8');
 <?php
 if ($_SESSION["name"]==$user["name"] && $_SESSION["pass"]==$user["pass"]){
 ?>
-	hello user <?=$_SESSION["name"]?>;
+	hello user <? echo htmlentities($_SESSION["name"]);?>;
 	</br>
 	</br>
 <?php
@@ -59,9 +61,9 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
 		
 ?>
-<td><?php echo (addslashes($vehicle[$rowIndex]["marka"])); ?></td>
-<td><?php echo (addslashes($vehicle[$rowIndex]["model"])); ?></td>
-<td><?php echo (addslashes($vehicle[$rowIndex]["rik"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["model"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["rik"])); ?></td>
 <?php
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>

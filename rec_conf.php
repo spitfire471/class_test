@@ -1,12 +1,11 @@
 <?php
 
-include ('Database/Abstract.php');
-$table_name="vehicle_info";
-$DB_object=new Database\DB();
+include ('Database/vehicle.php');
+$DB_object=new Database\Vehicle();
 if (isset($_POST["id"])){
 	$rows=array("marka","model","rik");
 	$values=array(addslashes($_POST["marka"]),addslashes($_POST["model"]),addslashes($_POST["rik"]));
-	$DB_object->update_data($_POST["id"],$table_name,$rows,$values);
+	$DB_object->update_vehicle($_POST["id"],$rows,$values);
 }
 else{
 	$rows="marka,model,rik";
@@ -14,7 +13,7 @@ else{
 	$model=addslashes($_POST["model"]);
 	$rik=addslashes($_POST["rik"]);
 	$values="'$marka','$model','$rik'";
-	$DB_object->add_data($table_name,$rows,$values);
+	$DB_object->add_vehicle($rows,$values);
 }
 echo "all OK";
 echo "</br>";

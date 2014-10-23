@@ -11,7 +11,7 @@ if ($name==$user["name"]){
 }
 else{
 	$DB_object2=$DB_object->add_user('name,pass',"'$name','$pass'");
-	echo "User ".$name." succsesfuly aded";
+	echo"User ".htmlentities($name)." succsesfuly aded";
 }
 echo '<center><a href="index.php">Authorizatoin page</a></center>';
 ?>

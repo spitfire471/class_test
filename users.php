@@ -19,7 +19,7 @@ $c=count($users);
 		
 ?>
 <td><?php echo ($users[$rowIndex]["id"]); ?></td>
-<td><?php echo ($users[$rowIndex]["name"]); ?></td>
+<td><?php echo (htmlentities($users[$rowIndex]["name"])); ?></td>
 <?php
 if ($users[$rowIndex]["permission"]==1 ){
 	$link="Delete rights";

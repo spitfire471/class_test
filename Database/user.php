@@ -14,13 +14,10 @@ return $user;
 }
 function delete_user($id){
 $user=$this->delete_data(self::table_name,$id);
-return $user;
 }
 function add_user($rows,$values){
 $user=$this->add_data(self::table_name,$rows,$values);
-return $user;
 }
-
 function update_user($id,$rows,$values){
 $user=$this->update_data($id,self::table_name,$rows,$values);
 }
