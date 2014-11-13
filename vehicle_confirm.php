@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+if ($_SESSION["id"]=='1'){
 include ('Database/vehicle.php');
 $DB_object=new Database\Vehicle();
 if (isset($_POST["id"])){
@@ -18,4 +19,8 @@ else{
 echo "all OK";
 echo "</br>";
 echo '<center><a href="main.php">Main page</a></center>';
+}
+else{
+header ('Location: index.php');
+}
 ?>

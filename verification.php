@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('Database/user.php');
 $name=addslashes($_POST["name"]);
 $pass=md5($_POST["pass"]);
