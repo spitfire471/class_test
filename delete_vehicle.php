@@ -1,12 +1,14 @@
 <?php
 session_start();
-if ($_SESSION["id"]=='1'){
 include_once ('Database/vehicle.php');
-$del=new Database\Vehicle();
-$del->delete_vehicle($_GET["id"]);
-echo "Vehicle deleted";
-echo "</br>";
-echo '<center><a href="main.php">Main page</a></center>';
+if ($_SESSION["autehtification_success"]){
+	$message="Vehicle deleted";
+	$link="main.php";
+	$link_name="Main page";
+	$del=new Database\Vehicle();
+	$del->delete_vehicle($_GET["id"]);
+	include_once('templates/confirm_page.html');
+	exit();
 }
 else{
 header ('Location: index.php');

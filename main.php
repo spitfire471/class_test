@@ -18,7 +18,7 @@ $DB_object= new Database\Vehicle();
 $vehicle=$DB_object->get_vehicles();	
 $c=count($vehicle);
 header('Content-Type: text/html; charset=utf-8');
-if ($_SESSION["id"]=='1'){
+if ($_SESSION["autehtification_success"]){
 include_once('templates/main.html');
 }
 else{

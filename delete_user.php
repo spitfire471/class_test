@@ -1,12 +1,14 @@
 <?php
 session_start();
-if ($_SESSION["id"]=='1'){
 include_once ('Database/user.php');
-$del=new Database\Users();
-$del->delete_user($_GET["id"]);
-echo "user deleted";
-echo "</br>";
-echo '<center><a href="users.php">User administration</a></center>';
+if ($_SESSION["autehtification_success"]){
+	$message="user deleted";
+	$link="users.php";
+	$link_name="User administration";
+	$del=new Database\Users();
+	$del->delete_user($_GET["id"]);
+	include_once('templates/confirm_page.html');
+	exit();
 }
 else{
 header ('Location: index.php');

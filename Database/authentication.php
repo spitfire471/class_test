@@ -13,12 +13,12 @@ unset ($_POST["pass"]);
 
 function user_verification(){
 if (isset ($_SESSION["name"])){
-	$_SESSION["id"]='';
+	$_SESSION["autehtification_success"]='';
 	$name=addslashes($_SESSION["name"]);
 	$DB_object= new Users();
 	$user=$DB_object->get_user('name',$name);
 	if ($_SESSION["name"]==$user["name"] && $_SESSION["pass"]==$user["pass"]){
-		$_SESSION["id"]='1';
+		$_SESSION["autehtification_success"]='1';
 	}
 return $user;
 }
