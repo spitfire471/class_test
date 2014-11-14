@@ -1,0 +1,55 @@
+<html>
+<title>main</title>
+<body>
+hello user <? echo htmlentities($_SESSION["name"]); ?>;
+</br>
+</br>
+<?php
+	if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) {
+?>
+		<a href="users.php">Users administration</a>
+		</br>
+		</br>
+<?php
+	}
+?>
+	<a href="add_vehicle.php">Add vehicle</a>
+<table border=1>
+<tr>
+<th>Marka</th>
+<th>Model</th>
+<th>Rik</th>
+<?php
+if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
+?>
+<th></th>
+<th></th>
+<?php
+}
+?>
+</tr>
+<?php
+	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
+		
+?>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["model"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["rik"])); ?></td>
+<?php
+if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
+?>
+<td><a href="add_vehicle.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>">edit</a></td>
+<td><a href="delete_vehicle.php?id=<?php echo ($vehicle[$rowIndex]["id"]);?>">delete</a></td>
+<?php
+}
+?>
+</tr>
+<?php
+}
+?>
+</table>	
+</br>
+<center><a href="logout.php">Sign out</a></center>
+
+</body>
+</html>

@@ -1,4 +1,6 @@
 <?php
+namespace Database;
+
 class DB{
 public $dblocation_var = "127.0.0.1";
 public $dbname_var = "web";
@@ -39,9 +41,17 @@ function add_data($table,$rows,$values){
 	self::connect_DB();
 	$query=mysql_query("INSERT INTO $table ($rows) VALUES ($values)");
 }
-function update_data($id,$marka,$model,$rik){
+
+function update_data($id,$table,$rows,$values){
 	self::connect_DB();
-	$query=mysql_query("UPDATE  vehicle_info SET marka='$marka',model='$model',rik='$rik' WHERE id='$id'");
+	$text="";
+	$count_rows=count($rows);
+	for ($rowindex=0;$rowindex<$count_rows;$rowindex++){
+		$text=$text."$rows[$rowindex]='$values[$rowindex]',";
+	}
+	$string=substr($text,0,-1);
+	$query=mysql_query("UPDATE  $table SET $string WHERE id='$id'");
+	return $string;
 }
 function change_permission($id){
 self::connect_DB();
@@ -55,5 +65,4 @@ self::connect_DB();
 	}
 }
 }
-
 ?>
