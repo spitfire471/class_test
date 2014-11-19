@@ -20,7 +20,7 @@ $user=$this->add_data(self::table_name,$rows,$values);
 }
 function update_user($id,$rows,$values){
 $user=$this->update_data($id,self::table_name,$rows,$values);
-return $user;
+
 }
 
 }

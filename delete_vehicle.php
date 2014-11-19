@@ -3,7 +3,7 @@ session_start();
 include_once ('Database/vehicle.php');
 if ($_SESSION["autehtification_success"]){
 	$message="Vehicle deleted";
-	$link="main.php";
+	$link="index.php";
 	$link_name="Main page";
 	$del=new Database\Vehicle();
 	$del->delete_vehicle($_GET["id"]);

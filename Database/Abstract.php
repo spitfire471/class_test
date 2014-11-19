@@ -52,9 +52,9 @@ function update_data($id,$table,$rows,$values){
 	$string=substr($text,0,-1);
 	$query=mysql_query("UPDATE  $table SET $string WHERE id='$id'");
 	$error=mysql_error();
-	//return $string;
-	return $error;
+	return $string;
 }
+
 function change_permission($id){
 self::connect_DB();
 	$query1 = mysql_query("SELECT * FROM users WHERE id='$id'");

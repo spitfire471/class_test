@@ -3,7 +3,7 @@ session_start();
 include ('Database/vehicle.php');
 if ($_SESSION["autehtification_success"]){
 	$DB_object=new Database\Vehicle();
-	$link="main.php";
+	$link="index.php";
 	$link_name="Main page";
 	$del=new Database\Vehicle()
 	if (isset($_POST["id"])){

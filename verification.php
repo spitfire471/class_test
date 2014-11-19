@@ -10,14 +10,21 @@ if ($capcha==$_SESSION["capcha"]){
 	$pass=md5($_POST["pass"]);
 	$DB_object=new Database\Users();
 	$DB_object2=new Database\Authentification();
+	$users=$DB_object->get_users();
 	$user=$DB_object->get_user('name',$name);
 	$mail_chek=$DB_object->get_user('email',$email);
 	$hash=md5(microtime());
+	if (isset($users)){
+		$permission=0;
+	}
+	else{
+		$permission=1;
+	}
 	
 	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		if ($name==!$user["name"]){
 			if ($email==!$mail_chek["email"]){
-				$add_user=$DB_object->add_user('name,pass,email',"'$name','$pass','$email'");
+				$add_user=$DB_object->add_user('name,pass,email,permission',"'$name','$pass','$email','$permission'");
 				$user=$DB_object->get_user('name',$name);
 				$id=$user["id"];
 				$add_user_verification=$DB_object2->add_user_activation('id,hash',"'$id','$hash'");
@@ -41,5 +48,5 @@ if ($capcha==$_SESSION["capcha"]){
 else {
 	echo "Capcha input wrong";
 }
-echo '<center><a href="index.php">Authorizatoin page</a></center>';
+echo '<center><a href="authorizatoin.php">Authorizatoin page</a></center>';
 ?>
