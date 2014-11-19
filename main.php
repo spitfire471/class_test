@@ -3,15 +3,15 @@ define ('ADMIN_PERMISSION_ALLOWED', 1);
 
 include_once('Database/user.php');
 include_once('Database/vehicle.php');
-include_once('Database/authentication.php');
+include_once('Database/authentification.php');
 session_start();
 
 if (isset($_POST["name"])){	
-	$DB_object= new Database\Authentication();
+	$DB_object= new Database\Authentification();
 	$DB_object->start_session();
 }
 
-$DB_object= new Database\Authentication();
+$DB_object= new Database\Authentification();
 $user=$DB_object->user_verification();	
 
 $DB_object= new Database\Vehicle();
