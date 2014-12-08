@@ -5,7 +5,7 @@ if ($_SESSION["autehtification_success"]){
 	$DB_object=new Database\Vehicle();
 	$link="index.php";
 	$link_name="Main page";
-	$del=new Database\Vehicle()
+	$del=new Database\Vehicle();
 	if (isset($_POST["id"])){
 		$rows=array("marka","model","rik");
 		$values=array(addslashes($_POST["marka"]),addslashes($_POST["model"]),addslashes($_POST["rik"]));

@@ -15,5 +15,5 @@ $add_activated=$DB_object->update_user($id,$rows,$values);
 
 echo "profile activated";
 echo "</br>";
-echo '<center><a href="authorizatoin.php">Authorizatoin page</a></center>';
+echo '<center><a href="authorization.php">Authorizatoin page</a></center>';
 ?>

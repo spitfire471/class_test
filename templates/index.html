@@ -2,27 +2,33 @@
 <title>main</title>
 <body>
 <?php
-if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) { 
+unset ($name);
+if (isset($_SESSION["name"])){
 echo "Hello ". htmlentities($_SESSION["name"]);
+$name=htmlentities($_SESSION["name"]);
+}
+if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) { 
+
 } ?>
 </br>
 </br>
 <?php
-	if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) {
+if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) {
 ?>
-		<a href="users.php">Users administration</a>
-		</br>
-		</br>
+	<a href="users.php">Users administration</a>
+	</br>
+	</br>
 <?php
-	}
-	if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
+}
+if (isset($_SESSION["name"])){
 ?>
 	<a href="add_vehicle.php">Add vehicle</a>
 <?php
-	}
+}
+if (isset($vehicle["0"])){
 ?>
 	
-<table border=1>
+<table border=10>
 <tr>
 <th>Marka</th>
 <th>Model</th>
@@ -37,7 +43,7 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
 </tr>
 <?php
-	for ($rowIndex=0;$rowIndex<$c;$rowIndex++){
+	for ($rowIndex=0;$rowIndex<$count_vehicle;$rowIndex++){
 		
 ?>
 <td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
@@ -58,7 +64,58 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 </table>	
 </br>
 <?php
-if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) {
+}
+?>
+<form name="comment" action="comment.php" method="post">
+<?php
+if (isset ($name)){
+?>
+Name:<input type="text" name="name" value="<?php echo $name;?>"  >
+<?php
+}
+else {
+?>
+Name:<input type="text" name="name">
+<?php
+}
+?>
+<br /> 
+Comment:
+<br />
+<textarea name="comment_text" cols="30" rows="10"></textarea>
+<br />
+<input type="hidden" name="page_id" value="index" >
+<input type="submit" value="Send" >
+ </form>
+
+</br>
+<?php
+
+if (isset($comments["0"])){
+?>
+<table border=1>
+<tr>
+<th>User</th>
+<th>Comment</th>
+<th>Date</th>
+</tr>
+<?php
+	for ($rowIndex=0;$rowIndex<$count_comments;$rowIndex++){
+		
+?>
+<td><?php echo (htmlentities($comments[$rowIndex]["user"])); ?></td>
+<td><?php echo (htmlentities($comments[$rowIndex]["comment"])); ?></td>
+<td><?php echo (htmlentities($comments[$rowIndex]["time"])); ?></td>
+</tr>
+<?php
+}
+?>
+</table>	
+</br>
+ 
+<?php
+}
+if (isset ($name)) {
 ?>
 <center><a href="logout.php">Sign out</a></center>
 <?php }

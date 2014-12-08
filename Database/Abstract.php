@@ -20,8 +20,18 @@ function connect_DB(){
 	}	
 }
 function select_all_data($table){
+	$result='';
 	self::connect_DB();
 	$query = mysql_query("SELECT * FROM $table");
+	while($data = mysql_fetch_assoc($query)){
+		$result[] = $data;
+	}
+	return $result;
+}
+function select_few_data($table,$column,$value){
+	$result='';
+	self::connect_DB();
+	$query = mysql_query("SELECT * FROM  $table WHERE $column='$value'");
 	while($data = mysql_fetch_assoc($query)){
 		$result[] = $data;
 	}

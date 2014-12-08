@@ -13,8 +13,8 @@ if ($capcha==$_SESSION["capcha"]){
 	$users=$DB_object->get_users();
 	$user=$DB_object->get_user('name',$name);
 	$mail_chek=$DB_object->get_user('email',$email);
-	$hash=md5(microtime());
-	if (isset($users)){
+	$hash=md5(microtime());	
+	if (isset($users[0]["id"])){
 		$permission=0;
 	}
 	else{
@@ -30,7 +30,7 @@ if ($capcha==$_SESSION["capcha"]){
 				$add_user_verification=$DB_object2->add_user_activation('id,hash',"'$id','$hash'");
 				$message = "to confirm registration click link\n http://localhost/2/mail_check.php?checksum=$hash \n";
 				$message = wordwrap($message, 200);
-				mail('spitfire.ukr@gmail.com', 'Registration', $message,'From: spitfire.ukr@gmail.com');
+				mail("spitfire.ukr@gmail.com", 'Registration', $message,'From: spitfire.ukr@gmail.com');
 				echo "User ".htmlentities($name)." succsesfuly aded";
 			}
 			else {
@@ -48,5 +48,5 @@ if ($capcha==$_SESSION["capcha"]){
 else {
 	echo "Capcha input wrong";
 }
-echo '<center><a href="authorizatoin.php">Authorizatoin page</a></center>';
+echo '<center><a href="authorization.php">Authorizatoin page</a></center>';
 ?>
