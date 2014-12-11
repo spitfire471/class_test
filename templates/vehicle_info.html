@@ -1,0 +1,47 @@
+</br>
+</br>
+<td><a href="add_vehicle.php?id=<?php echo $id; ?>">edit</a></td>
+</br>
+</br>
+<td><a href="delete_vehicle.php?id=<?php echo $id;?>">delete</a></td>
+</br>
+</table>	
+</br>
+</br>
+
+<?php
+
+if (isset($comments["0"])){
+?>
+<table border=1>
+<tr>
+<th>User</th>
+<th>Comment</th>
+<th>Date</th>
+</tr>
+<?php
+	for ($rowIndex=0;$rowIndex<$count_comments;$rowIndex++){
+		
+?>
+<td><?php echo (htmlentities($comments[$rowIndex]["user"])); ?></td>
+<td><?php echo (htmlentities($comments[$rowIndex]["comment"])); ?></td>
+<td><?php echo (htmlentities($comments[$rowIndex]["time"])); ?></td>
+</tr>
+<?php
+}
+?>
+</table>	
+</br>
+<?php
+}
+?>
+<form name="comment" action="comment.php" method="post">
+Name:<input type="text" name="name" value="<?php echo $name;?>"  >
+<br /> 
+Comment:
+<br />
+<textarea name="comment_text" cols="30" rows="10"></textarea>
+<br />
+<input type="hidden" name="page_id" value="<?php echo $page_id; ?>" >
+<input type="submit" value="Send" >
+</form>

@@ -7,9 +7,7 @@ if (isset($_SESSION["name"])){
 echo "Hello ". htmlentities($_SESSION["name"]);
 $name=htmlentities($_SESSION["name"]);
 }
-if ($user["permission"]==ADMIN_PERMISSION_ALLOWED) { 
-
-} ?>
+?>
 </br>
 </br>
 <?php
@@ -33,6 +31,9 @@ if (isset($vehicle["0"])){
 <th>Marka</th>
 <th>Model</th>
 <th>Rik</th>
+<th>Registration number</th>
+<th>User who added</th>
+<th>When added</th>
 <?php
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
@@ -44,11 +45,27 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 </tr>
 <?php
 	for ($rowIndex=0;$rowIndex<$count_vehicle;$rowIndex++){
-		
+		if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>
+
+<tr style="background-color:#ECECEC;"
+    onMouseOver="this.style.backgroundColor='red';"
+    onMouseOut="this.style.backgroundColor='#ECECEC'"
+    onclick="location.href='vehicle_info.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>'">
+<?php
+}	
+else{
+?>
+<tr>
+<?php
+}
+?>	
 <td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
 <td><?php echo (htmlentities($vehicle[$rowIndex]["model"])); ?></td>
 <td><?php echo (htmlentities($vehicle[$rowIndex]["rik"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["registration_number"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["user"])); ?></td>
+<td><?php echo (htmlentities($vehicle[$rowIndex]["added"])); ?></td>
 <?php
 if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 ?>

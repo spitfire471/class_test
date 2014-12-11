@@ -50,6 +50,7 @@ function delete_data($table,$id){
 function add_data($table,$rows,$values){
 	self::connect_DB();
 	$query=mysql_query("INSERT INTO $table ($rows) VALUES ($values)");
+	return mysql_error();
 }
 
 function update_data($id,$table,$rows,$values){

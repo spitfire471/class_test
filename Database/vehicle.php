@@ -17,6 +17,7 @@ $vehicle=$this->delete_data(self::table_name,$id);
 }
 function add_vehicle($rows,$values){
 $vehicle=$this->add_data(self::table_name,$rows,$values);
+return $vehicle;
 }
 function update_vehicle($id,$rows,$values){
 $vehicle=$this->update_data($id,self::table_name,$rows,$values);
