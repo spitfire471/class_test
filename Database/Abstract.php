@@ -19,30 +19,36 @@ function connect_DB(){
 		exit();
 	}	
 }
-function select_all_data($table){
+function select_list($table,$column = null,$value=null){
 	$result='';
 	self::connect_DB();
-	$query = mysql_query("SELECT * FROM $table");
-	while($data = mysql_fetch_assoc($query)){
-		$result[] = $data;
+	if (($column==null) && ($value==null)){
+		$query = mysql_query("SELECT * FROM $table");
+		while($data = mysql_fetch_assoc($query)){
+			$result[] = $data;
+		}
+		return $result;
 	}
-	return $result;
-}
-function select_few_data($table,$column,$value){
-	$result='';
-	self::connect_DB();
-	$query = mysql_query("SELECT * FROM  $table WHERE $column='$value'");
-	while($data = mysql_fetch_assoc($query)){
-		$result[] = $data;
+	elseif (isset($column) && isset($value)){
+		$query = mysql_query("SELECT * FROM  $table WHERE $column='$value'");
+		$num_rows=mysql_num_rows($query);
+		if ($num_rows>1){
+			while($data = mysql_fetch_assoc($query)){
+				$result[] = $data;
+			}
+			return $result;
+		}
+		elseif 	($num_rows==1){
+		$data=mysql_fetch_assoc($query);
+		return $data;
+		}
 	}
-	return $result;
+	elseif (isset($column) || isset($value)){
+	$message="Something wrong";
+	return $message;
+	}
 }
-function select_data($table,$column,$value){
-	self::connect_DB();
-	$query=mysql_query("SELECT * FROM  $table WHERE $column='$value'");
-	$data=mysql_fetch_assoc($query);
-	return $data;
-}
+
 function delete_data($table,$id){
 	self::connect_DB();
 	$query=mysql_query(" DELETE FROM $table WHERE id='$id'");

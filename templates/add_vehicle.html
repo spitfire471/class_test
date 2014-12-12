@@ -3,8 +3,22 @@
 <form action="vehicle_confirm.php" method="post">
 <input type="hidden" name="id" value="<?php echo $vehicle["id"];?>">
 Marka: <input type="text" name="marka" value="<?php echo (htmlentities($vehicle["marka"]));?>" >
+</br>
 Model: <input type="text" name="model" value="<?php echo (htmlentities($vehicle["model"]));?>" >
+</br>
 Rik: <input type="text" name="rik" value="<?php echo (htmlentities($vehicle["rik"]));?>" >
+</br>
+Color:<input type="text" name="color" value="<?php echo (htmlentities($vehicle["color"]));?>"  >
+</br>
+Registration number:<input type="text" name="registration_number" value="<?php echo (htmlentities($vehicle["registration_number"]));?>"  >
+</br>
+Owner:<input type="text" name="owner" value="<?php echo (htmlentities($vehicle["owner"]));?>"  >
+</br>
+Owner phone:<input type="text" name="owner_phone" value="<?php echo (htmlentities($vehicle["owner_phone"]));?>"  >
+</br>
+Owner address:<input type="text" name="owner_address" value="<?php echo (htmlentities($vehicle["owner_address"]));?>"  >
+</br>
+
 <input type="submit" value="Change record">
 </form>
 </body>

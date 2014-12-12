@@ -1,9 +1,15 @@
 </br>
 </br>
+<?php
+if ($users["permission"]==ADMIN_PERMISSION_ALLOWED) {
+?>
 <td><a href="add_vehicle.php?id=<?php echo $id; ?>">edit</a></td>
 </br>
 </br>
 <td><a href="delete_vehicle.php?id=<?php echo $id;?>">delete</a></td>
+<?php
+}
+?>
 </br>
 </table>	
 </br>
@@ -35,8 +41,18 @@ if (isset($comments["0"])){
 <?php
 }
 ?>
-<form name="comment" action="comment.php" method="post">
+<form name="comment" action="comment.php" method="post"><?php
+if (isset ($name)){
+?>
 Name:<input type="text" name="name" value="<?php echo $name;?>"  >
+<?php
+}
+else {
+?>
+Name:<input type="text" name="name">
+<?php
+}
+?>
 <br /> 
 Comment:
 <br />
@@ -45,3 +61,6 @@ Comment:
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" >
 <input type="submit" value="Send" >
 </form>
+</br>
+</br>
+<center><a href="index.php">main</a></center>

@@ -5,11 +5,11 @@ class Vehicle extends DB{
 const table_name="vehicle_info";
 
 function get_vehicles(){
-$vehicles=$this->select_all_data(self::table_name);
+$vehicles=$this->select_list(self::table_name);
 return $vehicles;
 }
 function get_vehicle($column,$value){
-$vehicle=$this->select_data(self::table_name,$column,$value);
+$vehicle=$this->select_list(self::table_name,$column,$value);
 return $vehicle;
 }
 function delete_vehicle($id){
@@ -22,6 +22,5 @@ return $vehicle;
 function update_vehicle($id,$rows,$values){
 $vehicle=$this->update_data($id,self::table_name,$rows,$values);
 }
-
 }
 ?>

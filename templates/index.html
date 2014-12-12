@@ -45,21 +45,13 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 </tr>
 <?php
 	for ($rowIndex=0;$rowIndex<$count_vehicle;$rowIndex++){
-		if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
+	
 ?>
 
 <tr style="background-color:#ECECEC;"
     onMouseOver="this.style.backgroundColor='red';"
     onMouseOut="this.style.backgroundColor='#ECECEC'"
     onclick="location.href='vehicle_info.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>'">
-<?php
-}	
-else{
-?>
-<tr>
-<?php
-}
-?>	
 <td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
 <td><?php echo (htmlentities($vehicle[$rowIndex]["model"])); ?></td>
 <td><?php echo (htmlentities($vehicle[$rowIndex]["rik"])); ?></td>

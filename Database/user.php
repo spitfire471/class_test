@@ -5,11 +5,11 @@ class Users extends DB{
 const table_name="users";
 
 function get_users(){
-$users=$this->select_all_data(self::table_name);
+$users=$this->select_list(self::table_name);
 return $users;
 }
 function get_user($column,$value){
-$user=$this->select_data(self::table_name,$column,$value);
+$user=$this->select_list(self::table_name,$column,$value);
 return $user;
 }
 function delete_user($id){
