@@ -49,6 +49,15 @@ function select_list($table,$column = null,$value=null){
 	}
 }
 
+function select_limit($table,$start_from,$limit){
+	$result='';
+	self::connect_DB();
+	$query = mysql_query("SELECT * FROM  $table LIMIT $start_from, $limit");
+	while($data = mysql_fetch_assoc($query)){
+		$result[] = $data;
+	}
+	return $result;
+}
 function delete_data($table,$id){
 	self::connect_DB();
 	$query=mysql_query(" DELETE FROM $table WHERE id='$id'");

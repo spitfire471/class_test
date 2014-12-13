@@ -12,6 +12,10 @@ function get_vehicle($column,$value){
 $vehicle=$this->select_list(self::table_name,$column,$value);
 return $vehicle;
 }
+function get_vehicle_limit($start_from,$limit){
+$vehicle=$this->select_limit(self::table_name,$start_from,$limit);
+return $vehicle;
+}
 function delete_vehicle($id){
 $vehicle=$this->delete_data(self::table_name,$id);
 }

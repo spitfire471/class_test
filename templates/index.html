@@ -34,38 +34,20 @@ if (isset($vehicle["0"])){
 <th>Registration number</th>
 <th>User who added</th>
 <th>When added</th>
-<?php
-if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
-?>
-<th></th>
-<th></th>
-<?php
-}
-?>
 </tr>
 <?php
-	for ($rowIndex=0;$rowIndex<$count_vehicle;$rowIndex++){
-	
+	for ($rowIndex=0;$rowIndex<$count_vehicle_limit;$rowIndex++){
 ?>
 
 <tr style="background-color:#ECECEC;"
     onMouseOver="this.style.backgroundColor='red';"
     onMouseOut="this.style.backgroundColor='#ECECEC'"
     onclick="location.href='vehicle_info.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>'">
-<td><?php echo (htmlentities($vehicle[$rowIndex]["marka"])); ?></td>
-<td><?php echo (htmlentities($vehicle[$rowIndex]["model"])); ?></td>
-<td><?php echo (htmlentities($vehicle[$rowIndex]["rik"])); ?></td>
-<td><?php echo (htmlentities($vehicle[$rowIndex]["registration_number"])); ?></td>
-<td><?php echo (htmlentities($vehicle[$rowIndex]["user"])); ?></td>
-<td><?php echo (htmlentities($vehicle[$rowIndex]["added"])); ?></td>
-<?php
-if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
-?>
-<td><a href="add_vehicle.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>">edit</a></td>
-<td><a href="delete_vehicle.php?id=<?php echo ($vehicle[$rowIndex]["id"]);?>">delete</a></td>
-<?php
-}
-?>
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["model"])); ?></td>
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["rik"])); ?></td>
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["registration_number"])); ?></td>
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["user"])); ?></td>
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["added"])); ?></td>
 </tr>
 <?php
 }
@@ -73,6 +55,9 @@ if ($user["permission"]==ADMIN_PERMISSION_ALLOWED){
 </table>	
 </br>
 <?php
+}
+for ($page_num=1; $page_num<=$total_pages; $page_num++) { 
+	echo "<a href='index.php?page=".$page_num."'>".$page_num."</a> "; 
 }
 ?>
 <form name="comment" action="comment.php" method="post">
