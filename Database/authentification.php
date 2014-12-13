@@ -26,15 +26,15 @@ if (isset ($_SESSION["name"])){
 	}
 	else {
 	$_SESSION["message"]='User did not activated';
+	header ('Location: authorization.php');
 	}
 }
-$_SESSION["id"]='';
 }
 function add_user_activation($rows,$values){
 $user_activation=$this->add_data(self::table_name,$rows,$values);
 }
 function get_user_activation($column,$value){
-$user_activation=$this->select_data(self::table_name,$column,$value);
+$user_activation=$this->select_list(self::table_name,$column,$value);
 return $user_activation;
 }
 }

@@ -42,7 +42,8 @@ if (isset($vehicle["0"])){
 <tr style="background-color:#ECECEC;"
     onMouseOver="this.style.backgroundColor='red';"
     onMouseOut="this.style.backgroundColor='#ECECEC'"
-    onclick="location.href='vehicle_info.php?id=<?php echo ($vehicle[$rowIndex]["id"]) ?>'">
+    onclick="location.href='vehicle_info.php?id=<?php echo ($vehicle_limit[$rowIndex]["id"]) ?>'">
+<td><?php echo (htmlentities($vehicle_limit[$rowIndex]["marka"])); ?></td>
 <td><?php echo (htmlentities($vehicle_limit[$rowIndex]["model"])); ?></td>
 <td><?php echo (htmlentities($vehicle_limit[$rowIndex]["rik"])); ?></td>
 <td><?php echo (htmlentities($vehicle_limit[$rowIndex]["registration_number"])); ?></td>
